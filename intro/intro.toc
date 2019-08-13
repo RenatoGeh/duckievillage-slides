@@ -1,0 +1,5 @@
+\babel@toc {portuguese}{}
+\beamer@sectionintoc {1}{Duckietown}{2}{0}{1}
+\beamer@sectionintoc {2}{OpenAI Gym}{3}{0}{2}
+\beamer@sectionintoc {3}{Gym-Duckietown}{4}{0}{3}
+\beamer@sectionintoc {4}{Duckievillage}{5}{0}{4}
