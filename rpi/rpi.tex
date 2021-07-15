@@ -1,0 +1,86 @@
+\documentclass{beamer}
+
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[style=brazilian]{csquotes}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{multicol}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+  \hbox{}\nobreak\hfill #1%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+\usetheme{boxes}
+
+\title{Lego Mindstorm + Raspberry Pi}
+\date{}
+\institute{\small MAC0318 - Introdução à Programação de Robôs Móveis\\~\\\scriptsize Instituto de
+Matemática e Estatística (IME)\\Universidade de São Paulo (USP)}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Acessando o Raspberry Pi}
+
+  Raspberry Pi's estão cadastradas nas faixas de IP de \texttt{172.26.0.10} até
+  \texttt{172.26.0.13}.
+  \vspace{1cm}
+
+  \begin{minted}{bash}
+    ssh pi@172.26.0.10
+  \end{minted}
+  \vspace{1cm}
+
+  Os computadores devem estar conectados à \texttt{eduroam} ou \texttt{Rede IME}, enquanto que as
+  placas devem estar conectadas à Rede \texttt{MAC0318}.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Descobrindo o IP da sua Raspberry Pi}
+
+  \begin{minted}{bash}
+    hostname -I
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Passando arquivos por SSH}
+
+  Para passar arquivos do computador ao Raspberry Pi:
+  \vspace{1cm}
+
+  \begin{minted}{bash}
+scp caminho/de/origem pi@172.26.0.10:caminho/de/destino
+scp ~/mac0318/code.py pi@172.26.0.10:~/
+  \end{minted}
+  \vspace{1cm}
+
+  Para passar arquivos do Raspberry Pi ao computador:
+  \vspace{1cm}
+
+  \begin{minted}{bash}
+scp pi@172.26.0.10:caminho/de/origem ~/caminho/de/destino
+scp pi@172.26.0.10:~/code.py ~/mac0318/
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Passando arquivos grandes}
+
+  Se os arquivos forem muito grandes, muitas vezes é mais rápido conectar o SD da placa direto no
+  computador por meio do adaptador micro-SD para SD.
+\end{frame}
+
+\end{document}
